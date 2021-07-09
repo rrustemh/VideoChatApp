@@ -3,8 +3,15 @@ const fs = require('fs');
 const bodyParser = require('body-parser')
  
 exports.sendEmail = (req, res, next) => {
- sendEmail('rrustemhyseni14@gmail.com')   
- res.sendStatus(200);
+    var jsonString = '';
+    req.on('data', function (data) {
+        jsonString += data;
+    });
+    req.on('end', function () {
+        var data=JSON.parse(jsonString);
+        sendEmail(data['email']);
+    });
+    res.sendStatus(200);
 };
 const sendEmail = (userEmail) => {
     var transporter = nodemailer.createTransport({
