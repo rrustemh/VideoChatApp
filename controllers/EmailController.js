@@ -18,7 +18,7 @@ const sendEmail = (userEmail) => {
         service: 'gmail',
         auth: {
           user: 'rrustem.hyseni@student.uni-pr.edu',
-          pass: '**rrh1234'
+          pass: 'test1234'
         }
       });
       
